@@ -19,7 +19,7 @@ pipeline {
                     // Ensure results directory exists
                     sh "mkdir -p ${ROBOT_RESULTS_DIR}"
 
-                    // Run Robot Framework test inside the venv
+                    // Run Robot Framework tests using virtual environment
                     sh """
                     ${VENV_PATH}/robot \
                         -d ${ROBOT_RESULTS_DIR} \
@@ -36,10 +36,16 @@ pipeline {
             }
         }
 
-        stage('Publish Robot Results') {
+        stage('Print Summary') {
             steps {
-                // Publish Robot Framework results if plugin is installed
-                robot outputPath: "${ROBOT_RESULTS_DIR}"
+                script {
+                    // Print a brief summary from output.xml
+                    sh """
+                    echo "===== Robot Test Summary ====="
+                    xmllint --xpath "string(//statistics/total/@pass)" ${ROBOT_RESULTS_DIR}/output.xml
+                    echo " tests passed"
+                    """
+                }
             }
         }
     }
