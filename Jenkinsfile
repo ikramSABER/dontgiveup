@@ -48,5 +48,23 @@ pipeline {
                 }
             }
         }
+        stage('Serve Reports') {
+            steps {
+                script {
+                    sh """
+                    cd ${ROBOT_RESULTS_DIR}
+                    nohup python3 -m http.server 8081 &
+                    """
+                }
+            }
+        }
+        stage('Copy Reports Locally') {
+            steps {
+                sh """
+                mkdir -p ~/robot_reports
+                cp -r ${ROBOT_RESULTS_DIR}/* ~/robot_reports/
+                """
+            }
+        }
     }
 }

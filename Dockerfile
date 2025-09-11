@@ -4,6 +4,19 @@ FROM jenkins/jenkins:lts
 USER root
 
 # Install Python 3, pip, dev tools
+# RUN apt-get update && \
+#     apt-get install -y --no-install-recommends \
+#     python3 \
+#     python3-venv \
+#     python3-pip \
+#     python3-dev \
+#     build-essential \
+#     curl \
+#     wget \
+#     unzip \
+#     git \
+#     && rm -rf /var/lib/apt/lists/*
+# Install Python + build tools + xmllint
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     python3 \
@@ -15,6 +28,7 @@ RUN apt-get update && \
     wget \
     unzip \
     git \
+    libxml2-utils \
     && rm -rf /var/lib/apt/lists/*
 
 # Create virtual environment for Python packages

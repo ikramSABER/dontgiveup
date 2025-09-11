@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.11.2 on linux)" generated="2025-09-11T00:21:39.430883" rpa="false" schemaversion="5">
+<suite id="s1" name="Google Search" source="/var/jenkins_home/workspace/google-engine-search/tests/google_search.robot">
+<test id="s1-t1" name="Search Google" line="12">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-11T00:21:39.755201" level="INFO">Opening browser 'chrome' to base url 'https://www.google.com' through remote server at 'http://selenium-hub:4444/wd/hub'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>remote_url=http://selenium-hub:4444/wd/hub</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-11T00:21:39.754771" elapsed="15.473909"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-11T00:21:55.230191" level="INFO">Typing text 'OpenAI' into text field 'name=q'.</msg>
+<arg>name=q</arg>
+<arg>${SEARCH_TERM}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-11T00:21:55.229418" elapsed="0.318154"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-09-11T00:21:55.548410" level="INFO">Sending key(s) ('RETURN',) to name=q element.</msg>
+<msg time="2025-09-11T00:21:56.096784" level="INFO">Pressing special key RETURN to element.</msg>
+<msg time="2025-09-11T00:21:56.096964" level="INFO">Releasing special key RETURN.</msg>
+<arg>name=q</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-09-11T00:21:55.547857" elapsed="2.596704"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${SEARCH_TERM}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-09-11T00:21:58.144897" elapsed="0.043152"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-09-11T00:21:58.390234" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-09-11T00:21:58.188384" elapsed="0.202052"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-09-11T00:21:58.390758" elapsed="0.179133"/>
+</kw>
+<doc>Open Google and search for a term, then verify results</doc>
+<status status="PASS" start="2025-09-11T00:21:39.753200" elapsed="18.817030"/>
+</test>
+<status status="PASS" start="2025-09-11T00:21:39.432195" elapsed="19.138787"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Google Search">Google Search</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
