@@ -66,5 +66,10 @@ pipeline {
                 """
             }
         }
+        stage('Publish Robot Results') {
+            steps {
+                robot outputPath: "${ROBOT_RESULTS_DIR}"
+            }
+        }
     }
 }
